@@ -283,6 +283,7 @@ public class frmRegistroUsuario extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Se registro usuario con exito", "registro exitoso", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
+    
     private void txtConfirmacionContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmacionContraseniaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtConfirmacionContraseniaActionPerformed
