@@ -17,7 +17,11 @@ public class frmLogin extends javax.swing.JFrame {
      */
     public frmLogin() {
         initComponents();
-        
+          Ingresar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            IngresarActionPerformed(evt);
+        }
+    });
     }
   
     /**
