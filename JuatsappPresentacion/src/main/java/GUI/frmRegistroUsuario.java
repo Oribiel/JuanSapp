@@ -10,6 +10,7 @@ import interfaces.IAgregarUsuario;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import negocio.AgregarUsuarioBO;
+import GUI.frmLogin;
 
 /**
  *
