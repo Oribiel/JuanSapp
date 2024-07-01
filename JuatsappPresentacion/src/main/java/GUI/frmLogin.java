@@ -66,6 +66,11 @@ public class frmLogin extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(0, 102, 255));
         jButton2.setText("Registrate");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 110, 50));
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 280, 50));
 
@@ -100,6 +105,14 @@ public class frmLogin extends javax.swing.JFrame {
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        frmRegistroUsuario registro = new frmRegistroUsuario();
+        registro.setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
