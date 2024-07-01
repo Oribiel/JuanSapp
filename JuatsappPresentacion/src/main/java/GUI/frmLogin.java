@@ -21,7 +21,11 @@ public class frmLogin extends javax.swing.JFrame {
      */
     public frmLogin() {
         initComponents();
-        
+        Ingresar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            IngresarActionPerformed(evt);
+        }
+    });
     }
   
     /**
@@ -50,21 +54,21 @@ public class frmLogin extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setText("Usuario");
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Usuario");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 160, 40));
 
-        jLabel4.setText("Contrasena");
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Contrasena");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, -1, -1));
 
-        jLabel2.setText("Inicio de Sesion");
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Inicio de Sesion");
         jLabel2.setToolTipText("");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 340, 68));
 
@@ -77,9 +81,10 @@ public class frmLogin extends javax.swing.JFrame {
         });
         jPanel2.add(Registrate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 110, 50));
 
-        Ingresar.setBackground(new java.awt.Color(0, 102, 255));
+        Ingresar.setBackground(new java.awt.Color(0, 102, 204));
+        Ingresar.setForeground(new java.awt.Color(255, 255, 255));
         Ingresar.setText("Ingresar");
-        jPanel2.add(Ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 550, 120, 50));
+        jPanel2.add(Ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 540, 130, 50));
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 280, 50));
 
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
@@ -118,24 +123,28 @@ public class frmLogin extends javax.swing.JFrame {
         
     }//GEN-LAST:event_RegistrateActionPerformed
    private void IngresarActionPerformed(java.awt.event.ActionEvent evt) {                                           
-      String usuario = jTextField1.getText();
-        String contrasena = new String(jPasswordField1.getPassword());
+String usuario = jTextField1.getText();
+    String contrasena = new String(jPasswordField1.getPassword());
 
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
+    System.out.println("Usuario ingresado: " + usuario);
+    // Verificar la contraseña ingresada (esto es solo para depurar)
+    System.out.println("Contraseña ingresada: " + contrasena);
 
-        try {
-            UsuarioDTO usuarioDTO = usuarioDAO.iniciarSesion(usuario, contrasena);
+    UsuarioDAO usuarioDAO = new UsuarioDAO();
 
-            if (usuarioDTO != null) {
-                frmChats usuarioFrame = new frmChats();
-                usuarioFrame.setVisible(true);
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    try {
+        UsuarioDTO usuarioDTO = usuarioDAO.iniciarSesion(usuario, contrasena);
+
+        if (usuarioDTO != null) {
+            frmChats usuarioFrame = new frmChats();
+            usuarioFrame.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
         }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }    
     /**
      * @param args the command line arguments

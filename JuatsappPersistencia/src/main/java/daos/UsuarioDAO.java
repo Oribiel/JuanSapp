@@ -26,9 +26,9 @@ public class UsuarioDAO implements IUsuarioDAO {
         System.out.println("La persona fue agregada correctamente: " + usuarioInsert);
     }
 
-    public UsuarioDTO iniciarSesion(String usuario, String contrasena) {
+    public UsuarioDTO iniciarSesion(String usuario, String contraseña) {
         MongoCollection<UsuarioColeccion> coleccion = conexionBD.obtenerMongoDatabase().getCollection("usuarios", UsuarioColeccion.class);
-        Bson filtro = Filters.and(Filters.eq("usuario", usuario), Filters.eq("contrasena", contrasena));
+        Bson filtro = Filters.and(Filters.eq("usuario", usuario), Filters.eq("contraseña", contraseña));
         UsuarioColeccion usuarioEncontrado = coleccion.find(filtro).first();
 
         if (usuarioEncontrado != null) {
@@ -38,5 +38,7 @@ public class UsuarioDAO implements IUsuarioDAO {
         }
     }
 }
+
+
 
 
