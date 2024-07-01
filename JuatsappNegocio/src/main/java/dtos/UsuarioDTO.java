@@ -1,17 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dtos;
 
+import colecciones.UsuarioColeccion;
 import java.util.Date;
 import java.util.List;
 import org.bson.types.ObjectId;
 
-/**
- *
- * @author filor
- */
 public class UsuarioDTO {
     private ObjectId id;
     private String usuario;
@@ -26,7 +19,8 @@ public class UsuarioDTO {
     public UsuarioDTO() {
     }
 
-    public UsuarioDTO(String usuario, String contraseña, String telefono, String sexo, DireccionDTO direccion, Date fechaNacimiento, String fotoPerfil) {
+    public UsuarioDTO(String usuario, String contraseña, String telefono, String sexo, DireccionDTO direccion, Date fechaNacimiento) {
+        this.id = id;
         this.usuario = usuario;
         this.contraseña = contraseña;
         this.telefono = telefono;
@@ -34,16 +28,22 @@ public class UsuarioDTO {
         this.direccion = direccion;
         this.fechaNacimiento = fechaNacimiento;
         this.fotoPerfil = fotoPerfil;
+        this.contactos = contactos;
     }
 
-    public UsuarioDTO(String usuario, String contraseña, String telefono, String sexo, DireccionDTO direccion, Date fechaNacimiento) {
-        this.usuario = usuario;
-        this.contraseña = contraseña;
-        this.telefono = telefono;
-        this.sexo = sexo;
-        this.direccion = direccion;
-        this.fechaNacimiento = fechaNacimiento;
+    public UsuarioDTO(UsuarioColeccion usuarioColeccion) {
+        this.id = usuarioColeccion.getId();
+        this.usuario = usuarioColeccion.getUsuario();
+        this.contraseña = usuarioColeccion.getContraseña();
+        this.telefono = usuarioColeccion.getTelefono();
+        this.sexo = usuarioColeccion.getSexo();
+        this.direccion = new DireccionDTO(usuarioColeccion.getDireccion());
+        this.fechaNacimiento = usuarioColeccion.getFechaNacimiento();
+        this.fotoPerfil = usuarioColeccion.getFotoPerfil();
+        this.contactos = usuarioColeccion.getContactos();
     }
+
+    // Getters y setters
     public ObjectId getId() {
         return id;
     }
@@ -115,8 +115,5 @@ public class UsuarioDTO {
     public void setContactos(List<String> contactos) {
         this.contactos = contactos;
     }
-
-    
-    
-    
 }
+

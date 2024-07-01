@@ -4,6 +4,7 @@
  */
 package dtos;
 
+import colecciones.DireccionColeccion;
 import org.bson.types.ObjectId;
 
 /**
@@ -21,11 +22,22 @@ public class DireccionDTO {
     }
 
     public DireccionDTO(String ciudad, String colonia, String calle, String numero) {
+        this.id = id;
         this.ciudad = ciudad;
         this.colonia = colonia;
         this.calle = calle;
         this.numero = numero;
     }
+
+    public DireccionDTO(DireccionColeccion direccionColeccion) {
+        this.id = id;
+        this.ciudad = ciudad;
+        this.colonia = colonia;
+        this.calle = calle;
+        this.numero = numero;
+    }
+
+
 
     public ObjectId getId() {
         return id;
