@@ -129,8 +129,13 @@ public class frmRegistroUsuario extends javax.swing.JFrame {
             }
         });
 
-        btnRegresar.setBackground(new java.awt.Color(0, 153, 255));
         btnRegresar.setText("Regresar");
+        btnRegresar.setBackground(new java.awt.Color(0, 153, 255));
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("jLabel4");
 
@@ -288,6 +293,13 @@ public class frmRegistroUsuario extends javax.swing.JFrame {
     private void txtConfirmacionContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmacionContraseniaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtConfirmacionContraseniaActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        // TODO add your handling code here:
+        frmLogin regresar = new frmLogin();
+        regresar.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
