@@ -36,6 +36,14 @@ public class UsuarioDTO {
         this.fotoPerfil = fotoPerfil;
     }
 
+    public UsuarioDTO(String usuario, String contraseña, String telefono, String sexo, DireccionDTO direccion, Date fechaNacimiento) {
+        this.usuario = usuario;
+        this.contraseña = contraseña;
+        this.telefono = telefono;
+        this.sexo = sexo;
+        this.direccion = direccion;
+        this.fechaNacimiento = fechaNacimiento;
+    }
     public ObjectId getId() {
         return id;
     }
