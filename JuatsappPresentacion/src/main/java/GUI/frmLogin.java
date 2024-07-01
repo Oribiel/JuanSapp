@@ -56,7 +56,7 @@ public class frmLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 204, 51));
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 0));
+        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Inicio de Sesion");
@@ -88,6 +88,11 @@ public class frmLogin extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(0, 153, 255));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Registrate");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -168,6 +173,12 @@ public class frmLogin extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        frmRegistroUsuario registroUsuario = new frmRegistroUsuario();
+        registroUsuario.setVisible(rootPaneCheckingEnabled);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

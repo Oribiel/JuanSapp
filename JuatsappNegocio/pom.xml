@@ -11,4 +11,17 @@
         <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>JuatsappNegocio</exec.mainClass>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>JuatsappPersistencia</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.jasypt</groupId>
+            <artifactId>jasypt</artifactId>
+            <version>1.9.3</version>
+        </dependency>
+    </dependencies>
 </project>
