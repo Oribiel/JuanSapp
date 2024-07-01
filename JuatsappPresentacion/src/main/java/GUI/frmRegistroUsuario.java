@@ -16,26 +16,28 @@ import negocio.AgregarUsuarioBO;
  * @author oribi
  */
 public class frmRegistroUsuario extends javax.swing.JFrame {
+
     IAgregarUsuario agregarUsuario;
+
+
     /**
      * Creates new form frmRegistroUsuario
      */
     public frmRegistroUsuario() {
         this.agregarUsuario = new AgregarUsuarioBO();
         initComponents();
-        
+
         this.limpiarCampos();
     }
-    
-    public void limpiarCampos(){
+
+    public void limpiarCampos() {
         this.txtConfirmacionContrasenia.setText("");
         this.txtContrasenia.setText("");
         this.txtDireccion.setText("");
         this.txtTelefono.setText("");
         this.txtUsuario.setText("");
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,6 +65,8 @@ public class frmRegistroUsuario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtConfirmacionContrasenia = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        datePicker = new com.github.lgooddatepicker.components.DatePicker();
+        jLabel9 = new javax.swing.JLabel();
 
         popupMenu1.setLabel("popupMenu1");
 
@@ -138,6 +142,9 @@ public class frmRegistroUsuario extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel8.setText("Confirmar contraseña:");
 
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel9.setText("Fecha nacimiento");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -176,8 +183,12 @@ public class frmRegistroUsuario extends javax.swing.JFrame {
                             .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
-                            .addComponent(cBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(218, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(cBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,9 +214,13 @@ public class frmRegistroUsuario extends javax.swing.JFrame {
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -253,16 +268,17 @@ public class frmRegistroUsuario extends javax.swing.JFrame {
         String contrasenia = this.txtContrasenia.getText();
         String sexo = this.cBoxSexo.getActionCommand();
         
+        Date fecha = new Date((String)(datePicker.getDate().getYear() + "/" + datePicker.getDate().getMonthValue() + "/" + datePicker.getDate().getDayOfMonth()));
         
         if (!contrasenia.equals(this.txtConfirmacionContrasenia.getText())) {
             // Mostrar mensaje de error
             JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         DireccionDTO direccion = new DireccionDTO();
-        
-        UsuarioDTO usuarioDTO = new UsuarioDTO(usuario,contrasenia,telefono,sexo,direccion, new Date());
+
+        UsuarioDTO usuarioDTO = new UsuarioDTO(usuario, contrasenia, telefono, sexo, direccion, fecha);
         agregarUsuario.agregarUsuarioBO(usuarioDTO);
         JOptionPane.showMessageDialog(this, "Se registro usuario con exito", "registro exitoso", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnRegistrarseActionPerformed
@@ -272,11 +288,11 @@ public class frmRegistroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtConfirmacionContraseniaActionPerformed
 
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrarse;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JComboBox<String> cBoxSexo;
+    private com.github.lgooddatepicker.components.DatePicker datePicker;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -285,6 +301,7 @@ public class frmRegistroUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private java.awt.PopupMenu popupMenu1;
     private javax.swing.JTextField txtConfirmacionContrasenia;
